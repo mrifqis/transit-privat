@@ -1,0 +1,23 @@
+[Unit]
+Description=Transit Privat
+After=network.target
+
+[Service]
+User=transit-privat
+Group=www-data
+WorkingDirectory=/opt/transit-privat
+RuntimeDirectory=transit-privat
+RuntimeDirectoryMode=0750
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStartPre=/usr/bin/python3 app.py init
+ExecStart=/usr/bin/gunicorn --bind unix:/run/transit-privat/app.sock --umask 007 --workers 2 --timeout 120 app:app
+Restart=on-failure
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/transit-privat
+
+[Install]
+WantedBy=multi-user.target

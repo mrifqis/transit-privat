@@ -1,0 +1,10 @@
+[Unit]
+Description=Bersihkan penyimpanan Transit Privat setiap menit
+
+[Timer]
+OnCalendar=minutely
+AccuracySec=5s
+Persistent=true
+
+[Install]
+WantedBy=timers.target

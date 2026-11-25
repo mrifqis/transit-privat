@@ -1,0 +1,15 @@
+[Unit]
+Description=Hapus kiriman Transit Privat yang kedaluwarsa
+
+[Service]
+Type=oneshot
+User=transit-privat
+Group=www-data
+WorkingDirectory=/opt/transit-privat
+ExecStart=/usr/bin/python3 app.py cleanup
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/transit-privat

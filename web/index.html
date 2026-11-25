@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Transit Privat</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script src="/assets/app.js" defer></script>
+</head>
+<body>
+<main>
+  <header><h1>Transit Privat</h1><button id="lock" hidden>Kunci sekarang</button></header>
+  <form id="login">
+    <label for="otp">Kode dari aplikasi autentikator</label>
+    <input id="otp" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required>
+    <button>Masuk</button>
+  </form>
+  <p id="status" role="status"></p>
+  <section id="workspace" hidden>
+    <form id="send">
+      <label for="name">Judul catatan <small>(opsional)</small></label>
+      <input id="name" maxlength="200">
+      <label for="text">Teks atau kode</label>
+      <textarea id="text" rows="8" spellcheck="false"></textarea>
+      <label for="file">File <small>(maks. 25 MiB)</small></label>
+      <input type="file" id="file">
+      <label for="minutes">Masa simpan dalam menit</label>
+      <input type="number" id="minutes" min="1" max="1440" value="60" required>
+      <button id="save">Simpan kiriman</button>
+    </form>
+    <section>
+      <h2>Kiriman aktif</h2>
+      <div id="items"></div>
+      <label id="preview-label" for="preview" hidden>Isi catatan</label>
+      <textarea id="preview" rows="8" readonly hidden></textarea>
+    </section>
+  </section>
+</main>
+</body>
+</html>
